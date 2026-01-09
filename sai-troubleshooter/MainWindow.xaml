@@ -1,0 +1,46 @@
+﻿<Window x:Class="Win11Tools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SAI Troubleshooter" Height="520" Width="820"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TitleText"
+           Grid.Row="0"
+           FontSize="16"
+           FontWeight="SemiBold"/>
+        <TextBlock Grid.Row="1" Margin="0,0,0,0" Foreground="Gray"
+                   Text="" />
+
+        <WrapPanel Grid.Row="2" Margin="0,0,0,10">
+            <Button x:Name="BtnSfc" Width="200" Height="36" Margin="0,0,10,0"
+                    Click="BtnSfc_Click" Content="Run SFC (/scannow)"/>
+            <Button x:Name="BtnDism" Width="240" Height="36" Margin="0,0,10,0"
+                    Click="BtnDism_Click" Content="Run DISM (RestoreHealth)"/>
+            <Button x:Name="BtnChk" Width="220" Height="36" Margin="0,0,10,0"
+                    Click="BtnChk_Click" Content="Run CHKDSK (C: /scan)"/>
+            <Button x:Name="BtnCancel" Width="120" Height="36" Margin="0,8,10,0"
+                    Click="BtnCancel_Click" Content="Cancel" IsEnabled="False"/>
+        </WrapPanel>
+
+        <TextBox x:Name="OutputBox" Grid.Row="3"
+                 FontFamily="Consolas" FontSize="13"
+                 IsReadOnly="True" TextWrapping="NoWrap"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"/>
+
+        <DockPanel Grid.Row="4" Margin="0,10,0,0">
+            <TextBlock x:Name="StatusText" DockPanel.Dock="Left" Foreground="Gray"
+                       Text="Ready." VerticalAlignment="Center"/>
+            <Button DockPanel.Dock="Right" Width="120" Height="30"
+                    Content="Clear" Click="Clear_Click"/>
+        </DockPanel>
+    </Grid>
+</Window>
